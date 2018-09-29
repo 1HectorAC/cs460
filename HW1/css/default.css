@@ -30,16 +30,22 @@ a{
     display: block;
 }
 
-.nav{
-
-    
-}
 
 /***************content field*************************/
 .content{
     background-color:red;
     padding-top:30px;
     padding-bottom: 50px;
+}
+
+th{
+    font-size: 30px;
+ 
+}
+td{
+    border: 3px solid black;
+    font-size: 40px;
+    
 }
 
 
