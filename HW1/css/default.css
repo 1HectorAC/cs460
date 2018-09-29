@@ -1,0 +1,45 @@
+/*****************header field ***************************/
+.header{
+    background-color:red;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+
+/*****************navigation bar ******************/
+#bar{
+    list-style-type: none;
+    padding: 0px 0px 0px 0px;
+    margin: auto;
+    
+
+    
+}
+.nlist{
+    float: left;
+    
+    border: 1px solid blue;
+    font-size: 25px;
+    padding: 5px 50px 5px 50px;
+    background-color: black;
+    
+    
+    
+}
+a{
+    display: block;
+}
+
+.nav{
+
+    
+}
+
+/***************content field*************************/
+.content{
+    background-color:red;
+    padding-top:30px;
+    padding-bottom: 50px;
+}
+
+
