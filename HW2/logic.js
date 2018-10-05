@@ -34,14 +34,24 @@ $("form").submit(function(event){
     }
     
     //edit text right after "Results:" text in html to announce amount of luck 
-    if(hitsTotal == 0)
+    if(hitsTotal == 0){
         $(anouncement).text("--Bad Luck--");
-    if(hitsTotal == 1)
+        $(anouncement).css("color", "#fe3e3e");   
+    }
+    if(hitsTotal == 1){
         $(anouncement).text("--Decent Luck--");
-    if(hitsTotal == 2)
+        $(anouncement).css("color", "rgba( 245, 231, 34, 0.995 )"); 
+        
+    }
+    if(hitsTotal == 2){
         $(anouncement).text("--Good Luck--");
-    if(hitsTotal == 3)
+        $(anouncement).css("color", "#39fe6d");
+    }
+    if(hitsTotal == 3){
         $(anouncement).text("Amazing Luck");
+        $(anouncement).css("color", "#39fe6d");
+        
+    }
     
     
     //added list
