@@ -45,7 +45,7 @@ $("form").submit(function(event){
     
     
     //added list
-    $("div#result").after("<h5>Generated Numbers: </h5><ul><li>" + hitnums[0] + "</li><li>" + hitnums[1] + "</li><li>" + hitnums[2] + "</li></ul> <h5>Hits Total:"+hitsTotal+"</h5>");
+    $("div#result").after("<h5>Generated Numbers: </h5><ul><li>" + hitnums[0] + "</li><li>" + hitnums[1] + "</li><li>" + hitnums[2] + "</li></ul> <h5>Hits Total:"+hitsTotal+"</h5><hr>");
 
     //alert(nums[0].value);
     event.preventDefault();
