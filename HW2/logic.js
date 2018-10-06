@@ -13,15 +13,15 @@ $("form").submit(function(event){
     //setup hitnums array with random numbers between 0 and 9
     var i;
     for(i = 0; i < 3; i++){
-        hitnums[i] = Math.floor(Math.random() * 4);
+        hitnums[i] = Math.floor(Math.random() * 9);
     }
     
     //check that hitnums has unique values and change them if not
     while(hitnums[0] == hitnums[1]){
-        hitnums[1] = Math.floor(Math.random() * 4);
+        hitnums[1] = Math.floor(Math.random() * 9);
     }
      while(hitnums[0] == hitnums[2] || hitnums[1] == hitnums[2]){
-        hitnums[2] = Math.floor(Math.random() * 4);
+        hitnums[2] = Math.floor(Math.random() * 9);
     }
     
     //count total number of hits(matching numbers from nums and hitnums)
