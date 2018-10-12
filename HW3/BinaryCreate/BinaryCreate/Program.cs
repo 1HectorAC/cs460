@@ -38,7 +38,7 @@ namespace BinaryCreate
             if(args.Length < 1)
             {
                 Console.WriteLine("Please invoke with the max value to print binary up to, like this:");
-                Console.WriteLine("\tjava? Main 12");
+                Console.WriteLine("\t./BinaryCreate.exe 12");
                 return;
             }
             try
@@ -53,6 +53,7 @@ namespace BinaryCreate
             LinkedList<string> output = GeneratedBinaryRepresentation(n);
 
             int maxLength = output.Last.Value.Length;
+  
             foreach(string s in output)
             {
                 for(int i = 0; i < maxLength - s.Length; ++i)
