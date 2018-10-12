@@ -60,14 +60,14 @@ public class LinkedQueue<T> : IQueue<T>
         else if(front == rear)
         {
             //one item in queue
-            tmp = front.data;
+            tmp = front.Data;
             front = null;
             rear = null;
         }
         else
         {
             //general case
-            tmp = front.data;
+            tmp = front.Data;
             front = front.next;
         }
         return tmp;
