@@ -6,16 +6,16 @@
 public class QueueUnderFlowException : SystemException
 {
     /// <summary>
-    /// Constructor
+    /// Constructor for QueueFlowException class.
     /// </summary>
 	public QueueUnderFlowException() : base()
 	{
 	}
 
     /// <summary>
-    /// Contructor with message
+    /// Contructor for QueueFlowException class with message.
     /// </summary>
-    /// <param name="message"></param>
+    /// <param name="message"> A message for user after exception. </param>
     public QueueUnderFlowException(string message) : base(message)
     {
     }
