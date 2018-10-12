@@ -52,10 +52,10 @@ namespace BinaryCreate
             }
             LinkedList<string> output = GeneratedBinaryRepresentation(n);
 
-            int maxLength = output;
-            for(string s : output)
+            int maxLength = output.Last.Value.Length;
+            foreach(string s in output)
             {
-                for(int i = 0; i < maxLength - s.Length(); ++i)
+                for(int i = 0; i < maxLength - s.Length; ++i)
                 {
                     Console.Write(" ");
                 }
