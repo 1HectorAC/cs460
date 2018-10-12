@@ -11,7 +11,7 @@ public class LinkedQueue<T> : IQueue<T>
     private Node<T> rear;
 
     /// <summary>
-    /// Constructor
+    /// Constructor of LinkedQueue.
     /// </summary>
 	public LinkedQueue()
 	{
@@ -20,10 +20,10 @@ public class LinkedQueue<T> : IQueue<T>
 	}
 
     /// <summary>
-    /// Add an element to the rear of the queue
+    /// Add an element to the rear of the queue.
     /// </summary>
-    /// <param name="element"></param>
-    /// <returns>The element that was enqueued</returns>
+    /// <param name="element"> The value that will be placed into the LinkedQueue. </param>
+    /// <returns> The element that was enqueued. </returns>
     public T Push(T element)
     {
         if(element == null)
@@ -48,10 +48,10 @@ public class LinkedQueue<T> : IQueue<T>
     /// <summary>
     /// Remove the front element from Queue.
     /// </summary>
-    /// <returns>The element that was removed </returns>
+    /// <returns> The element that was removed. </returns>
     public T Pop()
     {
-        //default istead of null
+ 
         T tmp = default(T);
         if (IsEmpty())
         {
@@ -59,14 +59,14 @@ public class LinkedQueue<T> : IQueue<T>
         }
         else if(front == rear)
         {
-            //one item in queue
+            // One item in queue.
             tmp = front.Data;
             front = null;
             rear = null;
         }
         else
         {
-            //general case
+            // General case.
             tmp = front.Data;
             front = front.next;
         }
@@ -74,9 +74,9 @@ public class LinkedQueue<T> : IQueue<T>
     }
 
     /// <summary>
-    /// Test if the queue is empty
+    /// Test if the queue is empty.
     /// </summary>
-    /// <returns>True if queue is empty and false otherwise</returns>
+    /// <returns> True if queue is empty and false otherwise. </returns>
     public bool IsEmpty()
     {
         if(front == null && rear == null)
