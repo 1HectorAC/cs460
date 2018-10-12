@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// Singly linked node class
+/// Singly linked node class.
 /// </summary>
 /// <typeparam name="T"></typeparam>
 public class Node<T>
@@ -15,10 +15,10 @@ public class Node<T>
     }
 
     /// <summary>
-    /// Singly linked node constructor
+    /// Singly linked node constructor.
     /// </summary>
-    /// <param name="data"></param>
-    /// <param name="next"></param>
+    /// <param name="data"> The value this node will hold. </param>
+    /// <param name="next"> The link to another node. </param>
     public Node(T data, Node<T> next)
 	{
         this.data = data;
