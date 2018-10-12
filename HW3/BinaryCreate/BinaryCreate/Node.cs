@@ -4,8 +4,15 @@
 /// <typeparam name="T"></typeparam>
 public class Node<T>
 {
-    public T data;
+    private T data;
+
     public Node<T> next;
+
+    public T Data
+    {
+        get { return data; }
+        set { data = value; }
+    }
 
     /// <summary>
     /// Singly linked node constructor
