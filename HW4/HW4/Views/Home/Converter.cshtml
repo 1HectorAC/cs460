@@ -4,4 +4,32 @@
 }
 
 <h2>Convert Miles to Metric</h2>
-<p>enter stuff here</p>
+
+<div class="col-md-m6">
+
+
+</div>
+<div class ="col-md-m6">
+
+
+</div>
+<form action="/my-handling-form-page" method="post">
+    <div class="col-md-6">
+        <label for="amount">Miles:</label>
+        <input type="text" id="name" name="amount">
+    </div>
+    <div class="col-md-6">
+        <h4>Select a unit</h4>
+        <hr/>
+        <input type="radio" name="unit" value="mm" checked> Millimeters<br>
+        <input type="radio" name="unit" value="cm" > Centimeters<br>
+        <input type="radio" name="unit" value="m" > Meters<br>
+        <input type="radio" name="unit" value="mm" > Kilometers<br>
+    </div>
+
+    <div class="button text-center">
+        <button type="submit">Convert</button>
+    </div>
+    <p class="result"></p>
+    <hr />
+</form>
