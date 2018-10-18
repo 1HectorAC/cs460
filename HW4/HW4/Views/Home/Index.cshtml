@@ -5,7 +5,9 @@
 <div class="jumbotron">
     <h1>CS 460 Homework 4</h1>
     <p class="lead">A few forms and some simple server-side logic -- learning the basics of GET, POST, qeuery strings, form data and handling it all from an ASP.NET MVC 5 application.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <!--change back to btn-primary and adjust link color later -->
+    <p class="btn btn-default btn-lg"> @Html.ActionLink("Learn more", "/", "Home") &raquo;</p>
+
 </div>
 
 <div class="row">
@@ -14,7 +16,7 @@
         <p>
             Want to know how many millimeters there are in 26.2 miles? This calculator is for you. Uses query strings to send form data to the server, which performs the calculations and returns the answer in the requested page.
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Try it out &raquo;</a></p>
+        <p class="btn btn-default">@Html.ActionLink("Try it out", "Converter", "Home") &raquo;</p>
     </div>
 
 </div>
