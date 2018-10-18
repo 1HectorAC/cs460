@@ -13,9 +13,16 @@ namespace HW4.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Converter()
         {
-         
+            string miles = (Request.QueryString["miles"]);
+            string units = (Request.QueryString["unit"]);
+            if(miles != null)
+            {
+                string message = miles + " miles is equal to " + units;
+                ViewBag.message = message;
+            }
             return View();
         }
 

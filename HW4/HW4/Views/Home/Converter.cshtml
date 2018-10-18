@@ -13,23 +13,27 @@
 
 
 </div>
-<form action="/my-handling-form-page" method="post">
+<form action="/Home/Converter" method="get">
     <div class="col-md-6">
-        <label for="amount">Miles:</label>
-        <input type="text" id="name" name="amount">
+        <label for="miles">Miles:</label>
+        <input type="number" id="miles" name="miles">
     </div>
     <div class="col-md-6">
         <h4>Select a unit</h4>
         <hr/>
-        <input type="radio" name="unit" value="mm" checked> Millimeters<br>
-        <input type="radio" name="unit" value="cm" > Centimeters<br>
-        <input type="radio" name="unit" value="m" > Meters<br>
-        <input type="radio" name="unit" value="mm" > Kilometers<br>
+        <input type="radio" name="unit" value="millimeters" checked> Millimeters<br>
+        <input type="radio" name="unit" value="centimeters" > Centimeters<br>
+        <input type="radio" name="unit" value="meters" > Meters<br>
+        <input type="radio" name="unit" value="kilometers" > Kilometers<br>
     </div>
 
     <div class="button text-center">
         <button type="submit">Convert</button>
     </div>
-    <p class="result"></p>
+    @if(ViewBag.message != null)
+    {
+        <p>@ViewBag.message</p>
+    }
+
     <hr />
 </form>
