@@ -5,7 +5,7 @@
 
 <h2>Create a New Color</h2>
 <p>Please enter colors in HTML hexadecimal format: #AABBCC</p>
-<!--labels here-->
+
 @using (@Html.BeginForm("Create", "Color", FormMethod.Post))
 {
     @Html.Label("first", "First Color")
@@ -18,8 +18,23 @@
     <br />
     <br />
     @Html.TextBox("submited", "MixColors", htmlAttributes: new { @class = "submited", type = "submit" })
+    <br />
 
-    <p> @ViewBag.first </p>
+    if (ViewBag.first != null)
+    {
+    <br />
+    <div class="container">
+        <div class="col-md-2" style="width:100px; height:100px; background:@ViewBag.first">
+        </div>
+        <h4 class="col-md-1 text-center"> + </h4>
+        <div class="col-md-2" style="width:100px; height:100px; background:@ViewBag.second">
+        </div>
+        <h4 class="col-md-1 text-center"> = </h4>
+        <div class="col-md-2" style="width:100px; height:100px; background:@ViewBag.result">
+        </div>
+    </div>
+    }
+    <p> @ViewBag.result </p>
 }
 
 
