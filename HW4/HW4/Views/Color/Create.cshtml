@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create a New Color</h2>
+<p>Please enter colors in HTML hexadecimal format: #AABBCC</p>
+<!--labels here-->
+@using (@Html.BeginForm("Create", "Color", FormMethod.Post))
+{
+    @Html.Label("first", "First Color")
+    <br />
+    @Html.TextBox("first", null, htmlAttributes: new { @class = "first", type = "text" })
+    <br />
+    @Html.Label("second", "Second Color")
+    <br />
+    @Html.TextBox("second", null, htmlAttributes: new { @class = "second", type = "text" })
+    <br />
+    <br />
+    @Html.TextBox("submited", "MixColors", htmlAttributes: new { @class = "submited", type = "submit" })
+
+    <p> @ViewBag.first </p>
+}
+
+
