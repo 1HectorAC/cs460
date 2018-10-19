@@ -16,7 +16,7 @@
 <form action="/Home/Converter" method="get">
     <div class="col-md-6">
         <label for="miles">Miles:</label>
-        <input type="number" id="miles" name="miles">
+        <input type="number" id="miles" name="miles" step="0.01" max="10000000" min="-10000000" required>
     </div>
     <div class="col-md-6">
         <h4>Select a unit</h4>
