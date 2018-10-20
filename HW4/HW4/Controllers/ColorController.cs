@@ -11,41 +11,65 @@ namespace HW4.Controllers
 {
     public class ColorController : Controller
     {
-
+        /// <summary>
+        /// It will create the Create view. This will be called when GET is requested.
+        /// </summary>
+        /// <returns>The Create view will be returned.</returns>
         [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
-
+        /// <summary>
+        /// It will create the Create view. This will be called when Post is requested.
+        /// </summary>
+        /// <param name="colorA">This is the first hexadecimal color to mix.</param>
+        /// <param name="colorB">This is the second hexadecimal color to mix.</param>
+        /// <returns>The Create view will be returned.</returns>
         [HttpPost]
-        public ActionResult Create(string first, string second)
+        public ActionResult Create(string colorA, string colorB)
         {
-
-            //int one = Convert.ToInt32(first.Substring(1, 2), 16);
-            //int two = Convert.ToInt32(first.Substring(3, 4), 16);
-            //int three = Convert.ToInt32(first.Substring(5, 6), 16);
-            string result = "#";
-            for(int i = 1; i <= 5; i+=2)
+            string mixedColor = "#";
+            //Check for invalid length of 4 or 5 for color string not including the #.
+            //Note that html validation will already restrict length of colorA and colorB from 3 to 6.
+            if (!(colorA.Length == 5 || colorA.Length == 6 || colorB.Length == 5 || colorB.Length == 6))
             {
-                int decFirst = Convert.ToInt32(first.Substring(i, 2), 16);
-                int decSec = Convert.ToInt32(second.Substring(i, 2), 16);
-                if (decFirst + decSec > 255)
-                    result = result + "FF";
-                else
+                //Check if colorA and colorB are 3 character and adjust it to 6 if so, not conting the #.
+                if (colorA.Length == 4)
                 {
-                    if(decFirst + decSec < 10)
-                        result = result + "0" + (decFirst + decSec).ToString("X");
+                    colorA = "#" + colorA[1] + colorA[1] + colorA[2] + colorA[2] + colorA[3] + colorA[3];
+                }
+                if (colorB.Length == 4)
+                {
+                    colorB = "#" + colorB[1] + colorB[1] + colorB[2] + colorB[2] + colorB[3] + colorB[3];
+                }
+
+                //Setup up mixedColor with mix of colorA and colorB.
+                for (int i = 1; i <= 5; i += 2)
+                {
+                    //Convert part of colorA to decimal.
+                    int colorDecimalA = Convert.ToInt32(colorA.Substring(i, 2), 16);
+                    //Convert part of colorB to decimal.
+                    int colorDecimalB = Convert.ToInt32(colorB.Substring(i, 2), 16);
+                    //Check if addition of colorDecimalA and colorDecimalB is too high.
+                    if (colorDecimalA + colorDecimalB >= 255)
+                        mixedColor = mixedColor + "FF";
                     else
-                        result = result + (decFirst + decSec).ToString("X");
+                    {
+                        //Make sure that 0(s) is added properly when converting back to hexadecimal.
+                        if (colorDecimalA + colorDecimalB == 0)
+                            mixedColor = mixedColor + "00";
+                        else if (colorDecimalA + colorDecimalB < 10)
+                            mixedColor = mixedColor + "0" + (colorDecimalA + colorDecimalB).ToString("X");
+                        else
+                            mixedColor = mixedColor + (colorDecimalA + colorDecimalB).ToString("X");
+                    }
                 }
             }
-            Debug.WriteLine(first + " + " + second + " = " + result);
-
-
-            @ViewBag.first = first;
-            @ViewBag.second = second;
-            @ViewBag.result = result;
+           
+            @ViewBag.first = colorA;
+            @ViewBag.second = colorB;
+            @ViewBag.result = mixedColor;
             return View();
         }
 
