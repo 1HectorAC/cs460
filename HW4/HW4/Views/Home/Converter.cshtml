@@ -5,18 +5,12 @@
 
 <h2>Convert Miles to Metric</h2>
 
-<div class="col-md-m6">
-
-
-</div>
-<div class ="col-md-m6">
-
-
-</div>
+<!--create form here-->
 <form action="/Home/Converter" method="get">
     <div class="col-md-6">
         <label for="miles">Miles:</label>
-        <input type="number" id="miles" name="miles" step="0.01" max="10000000" min="-10000000" required>
+        <!--form validation allows only numbers, limits decimal to 2 places, range can be -1000000000 to 1000000000 and the field is required-->
+        <input class="form-control" type="number" id="miles" name="miles" step="0.01" max="1000000000" min="-1000000000" required>
     </div>
     <div class="col-md-6">
         <h4>Select a unit</h4>
@@ -27,13 +21,14 @@
         <input type="radio" name="unit" value="kilometers" > Kilometers<br>
     </div>
 
-    <div class="button text-center">
-        <button type="submit">Convert</button>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" >Convert</button>
     </div>
+
+    <!--display message if it is not empty-->
     @if(ViewBag.message != null)
     {
         <p>@ViewBag.message</p>
     }
-
-    <hr />
+ 
 </form>
