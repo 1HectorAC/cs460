@@ -6,35 +6,43 @@
 <h2>Create a New Color</h2>
 <p>Please enter colors in HTML hexadecimal format: #AABBCC</p>
 
+<!--create form here-->
 @using (@Html.BeginForm("Create", "Color", FormMethod.Post))
 {
-    @Html.Label("first", "First Color")
+    @Html.Label("first", "FirstColor")
     <br />
-    @Html.TextBox("first", null, htmlAttributes: new { @class = "first", type = "text" })
+    <!--text box has form validation of starting with #, containing only A-F/a-f/0-9 characters and requiring string length of 3-6 after "#".-->
+    @Html.TextBox("colorA", null, htmlAttributes: new { @class = "form-control", type = "text", pattern = "^[#]?[A-Fa-f0-9]{3,6}$" })
     <br />
-    @Html.Label("second", "Second Color")
+    @Html.Label("second", "SecondColor")
     <br />
-    @Html.TextBox("second", null, htmlAttributes: new { @class = "second", type = "text" })
+    <!--same form validation as above textbox-->
+    @Html.TextBox("colorB", null, htmlAttributes: new { @class = "form-control", type = "text", pattern = "^[#]?[A-Fa-f0-9]{3,6}$" })
     <br />
     <br />
-    @Html.TextBox("submited", "MixColors", htmlAttributes: new { @class = "submited", type = "submit" })
+    @Html.TextBox("submited", "MixColors", htmlAttributes: new { @class = "btn btn-primary", type = "submit" })
     <br />
 
-    if (ViewBag.first != null)
+    <!--check if result color is set and desplay if it contains a valid value.-->
+    <!-- Will give error if result only has #, caused from length of colorA or colorB being 4 or 5 not counting the #-->
+    if (ViewBag.result != null && ViewBag.result != "#")
     {
-    <br />
-    <div class="container">
-        <div class="col-md-2" style="width:100px; height:100px; background:@ViewBag.first">
+        <br />
+        <div class="container">
+            <div class="col-md-2" style="width:100px; height:100px; border: 1px solid black; background:@ViewBag.first">
+            </div>
+            <h4 class="col-md-1 text-center"> + </h4>
+            <div class="col-md-2" style="width:100px; height:100px; border: 1px solid black; background:@ViewBag.second">
+            </div>
+            <h4 class="col-md-1 text-center"> = </h4>
+            <div class="col-md-2" style="width:100px; height:100px; border: 1px solid black; background:@ViewBag.result">
+            </div>
         </div>
-        <h4 class="col-md-1 text-center"> + </h4>
-        <div class="col-md-2" style="width:100px; height:100px; background:@ViewBag.second">
-        </div>
-        <h4 class="col-md-1 text-center"> = </h4>
-        <div class="col-md-2" style="width:100px; height:100px; background:@ViewBag.result">
-        </div>
-    </div>
     }
-    <p> @ViewBag.result </p>
+    else if (ViewBag.result == "#")
+    {
+        <div class="alert alert-danger">Bad Input entered</div>
+    }
 }
 
 
