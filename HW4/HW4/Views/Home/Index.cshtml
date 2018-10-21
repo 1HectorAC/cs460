@@ -4,15 +4,24 @@
 
 <div class="jumbotron">
     <h1>CS 460 Homework 4</h1>
-    <p class="lead">A few form and some simple server-side logic -- learning the basics of GET, POST, qeuery strings, form data and handiling it all from an ASP.NET MVC 5 application.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <p class="lead">A few forms and some simple server-side logic -- learning the basics of GET, POST, qeuery strings, form data and handling it all from an ASP.NET MVC 5 application.</p>
+    <p class="btn btn-default btn-lg"> @Html.ActionLink("Learn more", "/", "Home") &raquo;</p>
 </div>
 
 <div class="row">
+    <div class="col-md-4">
+        <h2>Mile to Metric Converter</h2>
+        <p>
+            Want to know how many millimeters there are in 26.2 miles? This calculator is for you. Uses query strings to send form data to the server, which performs the calculations and returns the answer in the requested page.
+        </p>
+        <p class="btn btn-default">@Html.ActionLink("Try it out", "Converter", "Home") &raquo;</p>
+    </div>
 
     <div class="col-md-4">
         <h2>Color Chooser</h2>
         <p>Typical online color choosers are way too useful. We wanted something fun and completly useless.</p>
         <p class="btn btn-default">@Html.ActionLink("ColorChooser", "Create", "Color") &raquo;</p>
     </div>
+
 </div>
+    
