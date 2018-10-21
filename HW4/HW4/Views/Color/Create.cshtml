@@ -12,12 +12,12 @@
     @Html.Label("first", "FirstColor")
     <br />
     <!--text box has form validation of starting with #, containing only A-F/a-f/0-9 characters and requiring string length of 3-6 after "#".-->
-    @Html.TextBox("colorA", null, htmlAttributes: new { @class = "form-control", type = "text", pattern = "^[#]?[A-Fa-f0-9]{3,6}$" })
+    @Html.TextBox("colorA", null, htmlAttributes: new { @class = "form-control", type = "text", pattern = "^[#]?[A-Fa-f0-9]{3,6}$", required = "required" })
     <br />
     @Html.Label("second", "SecondColor")
     <br />
     <!--same form validation as above textbox-->
-    @Html.TextBox("colorB", null, htmlAttributes: new { @class = "form-control", type = "text", pattern = "^[#]?[A-Fa-f0-9]{3,6}$" })
+    @Html.TextBox("colorB", null, htmlAttributes: new { @class = "form-control", type = "text", pattern = "^[#]?[A-Fa-f0-9]{3,6}$", required = "required" })
     <br />
     <br />
     @Html.TextBox("submited", "MixColors", htmlAttributes: new { @class = "btn btn-primary", type = "submit" })
