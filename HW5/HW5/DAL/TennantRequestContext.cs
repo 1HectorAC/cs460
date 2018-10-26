@@ -10,7 +10,7 @@ namespace HW5.DAL
     public class TennantRequestContext : DbContext
     {
         //rename database
-        public TennantRequestContext() : base("name=SecondTry")
+        public TennantRequestContext() : base("name=TennantInfo")
         {
 
         }
