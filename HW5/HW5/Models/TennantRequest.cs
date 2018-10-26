@@ -8,6 +8,8 @@ namespace HW5.Models
 {
     public class TennantRequest
     {
+        [Key]
+        public int ID { get; set; }
 
         [Required, StringLength(20)]
         public string FirstName { get; set; }
@@ -15,8 +17,8 @@ namespace HW5.Models
         [Required, StringLength(20)]
         public string LastName { get; set; }
 
-        [Required]
-        public int PhoneNumber { get; set; }
+        [Required, Phone]
+        public string PhoneNumber { get; set; }
 
         [Required, StringLength(20)]
         public string ApartmentName { get; set; }
@@ -24,14 +26,19 @@ namespace HW5.Models
         [Required]
         public int UnitNumber { get; set; }
 
-        [Required, StringLength(50)]
-        public string Description { get; set; }
+        [Required, StringLength(100)]
+        public string RequestDescription { get; set; }
+
+     
+        public bool AllowEnter { get; set; }
 
         //add timestamp maker
+        public DateTime RequestTimeStamp { get; set; }
+        
 
         public override string ToString()
         {
-            return $"{base.ToString()}: {FirstName} {LastName} {PhoneNumber} {ApartmentName} {UnitNumber} {Description}";
+            return $"{base.ToString()}: {FirstName} {LastName} {PhoneNumber} {ApartmentName} {UnitNumber} {RequestDescription}";
         }
     }
 }
