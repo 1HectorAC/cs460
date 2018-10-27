@@ -1,2 +1,2 @@
-﻿-- Take the Users table down
+﻿-- Take the TennantRequests table down
 DROP TABLE [dbo].[TennantRequests];
