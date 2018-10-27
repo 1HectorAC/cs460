@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+.colorRed {
+    background-color: #FC6060;
+    color: white;
+}
+.colorWhite {
+    background-color: white;
+    color: #363636;
+}
