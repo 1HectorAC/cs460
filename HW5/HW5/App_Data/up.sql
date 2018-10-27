@@ -7,7 +7,7 @@ CREATE TABLE [dbo].[TennantRequests]
 	[PhoneNumber]	NVARCHAR(64)		NOT NULL,
 	[ApartmentName]	NVARCHAR(128)		NOT NULL,
 	[UnitNumber]	INT		NOT NULL,
-	[RequestDescription]	NVARCHAR(100)		NOT NULL,
+	[RequestDescription]	NVARCHAR(200)		NOT NULL,
 	[RequestTimeStamp]		DateTime			NOT NULL,
 	[AllowEnter]		BIT			NOT NULL,
 
