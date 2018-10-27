@@ -9,7 +9,9 @@ namespace HW5.DAL
 {
     public class TennantRequestContext : DbContext
     {
-        //rename database
+        /// <summary>
+        /// Constructor for Tennant Request. Has connection to db.
+        /// </summary>
         public TennantRequestContext() : base("name=TennantInfo")
         {
 
