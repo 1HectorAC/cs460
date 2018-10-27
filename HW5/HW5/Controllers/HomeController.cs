@@ -13,34 +13,38 @@ namespace HW5.Controllers
     {
         private TennantRequestContext db = new TennantRequestContext();
 
+        /// <summary>
+        /// This is the action to get the index view.
+        /// </summary>
+        /// <returns>Index view wll be returned.</returns>
         public ActionResult Index()
         {
             return View();
         }
+
+        /// <summary>
+        /// This is the action to get the index view. This is to display the values of the database.
+        /// </summary>
+        /// <returns> Display view will be returned.</returns>
         public ActionResult Display()
         {
             return View(db.TennantRequests.ToList());
         }
-        /*
-        // GET: Users/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            TennantRequest user = db.TennantRequests.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }*/
 
+        /// <summary>
+        /// This is the action to get the Create view with GET.
+        /// </summary>
+        /// <returns> Create view will be returned.</returns>
         public ActionResult Create()
         {
             return View();
         }
+
+        /// <summary>
+        /// This is the action to get the Create view with POST.
+        /// </summary>
+        /// <param name="tennant"></param>
+        /// <returns>Create view will be returned.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,FirstName,LastName,PhoneNumber,ApartmentName,UnitNumber,RequestDescription,AllowEnter")] TennantRequest tennant)
@@ -56,39 +60,5 @@ namespace HW5.Controllers
             return View(tennant);
         }
         
-        // GET: Users/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            TennantRequest user = db.TennantRequests.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
-
-        // POST: Users/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            TennantRequest user = db.TennantRequests.Find(id);
-            db.TennantRequests.Remove(user);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-        
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
