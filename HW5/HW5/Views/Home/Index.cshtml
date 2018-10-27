@@ -2,23 +2,22 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+<div class="colorWhite jumbotron text-center">
     <h1>Campus Requests</h1>
-    <p class="lead">Here at (insert name) University we try to maintain the best standards and environments. We strive to make life on campus a great as can be.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <p class="lead">Here at (insert name of location) we try to maintain the best standards. We strive to make life on campus as great as can be.</p>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="colorRed col-md-6 text-center">
         <h2>Make Request</h2>
         <p>
             Have a issue we can solve? Make a request here and we will get to it as soon as possible.
         </p>
-        <p>@Html.ActionLink("Make Request", "Create", "Home") &raquo;</p>
+        <p>@Html.ActionLink("Make Request", "Create", "Home", new { @class = "btn btn-success" }) </p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6 text-center">
         <h2>View Requests</h2>
         <p>View Requests made by Tennant.</p>
-        <p>@Html.ActionLink("Make Request", "Display", "Home") &raquo;</p>
+        <p>@Html.ActionLink("View Request", "Display", "Home", new { @class = "btn btn-success" })</p>
     </div>
 </div>
