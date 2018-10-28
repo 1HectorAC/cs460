@@ -36,7 +36,8 @@
         <th></th>
     </tr>
     <!--output every value-->
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
@@ -63,5 +64,5 @@
             @Html.DisplayFor(modelItem => item.RequestTimeStamp)
         </td>
     </tr>
-
+}
 </table>
