@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="colorWhite jumbotron text-center">
+    <h1>Campus Requests</h1>
+    <p class="lead">Here at (insert name of location) we try to maintain the best standards. We strive to make life on campus as great as can be.</p>
+</div>
+
+<div class="row">
+    <div class="colorRed col-md-6 text-center">
+        <h2>Make Request</h2>
+        <p>
+            Have a issue we can solve? Make a request here and we will get to it as soon as possible.
+        </p>
+        <p>@Html.ActionLink("Make Request", "Create", "Home",null, new { @class = "btn btn-success" }) </p>
+    </div>
+    <div class="col-md-6 text-center">
+        <h2>View Requests</h2>
+        <p>View Requests made by Tennant.</p>
+        <p>@Html.ActionLink("View Request", "Display", "Home", null, new { @class = "btn btn-success" })</p>
+    </div>
+</div>
