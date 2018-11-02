@@ -13,12 +13,16 @@ namespace HW6.Controllers
         WorldWideImportersContext db = new WorldWideImportersContext();
         public ActionResult Index()
         {
-            Debug.Write("\n stuff \n \n");
-            Debug.Write("\n\n" + db.Cities.Find(3).CityName + "\n\n");
+            string name = (Request.QueryString["name"]);
+            if (name != null)
+            {
+                ViewBag.name = name;
+                return View(db.People.Where(n => n.SearchName.Contains(" " + name + " ")).ToList());
+
+            }
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Index(string name)
         {
             /*
@@ -29,11 +33,24 @@ namespace HW6.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Display");
             }*/
-            var names = 
+            //have stuff here
+   
+            var people = db.People.Where(n => n.SearchName.Contains(" " + name + " "));
+
+
 
 
             //need to enter some variable here, probably colection of names from search
-            return View();
+            return View(people.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult Detail(int id)
+        {
+            var person = db.People.Find(id);
+
+            //var person = db.People.FirstOrDefault();
+            return View(person);
         }
 
     }
