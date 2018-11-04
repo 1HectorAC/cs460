@@ -12,7 +12,7 @@
 
 @if (Model != null)
 {
-    <p>Names matching your search @ViewBag.name :</p>
+    <p>Names matching your search ( @ViewBag.name ):</p>
     using (Html.BeginForm("Detail", "Home"))
     {
         foreach (var item in Model)
