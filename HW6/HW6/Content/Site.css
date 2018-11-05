@@ -22,3 +22,17 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.darken {
+    background-color: #DFE1F2;
+}
+.hColor {
+    background-color: #303557;
+    color: white;
+}
+.borderLine{
+    border-style: solid;
+    border-color:white;
+    border-width: 3px;
+    margin: 15px;
+}
