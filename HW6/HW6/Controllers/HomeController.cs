@@ -12,6 +12,11 @@ namespace HW6.Controllers
     public class HomeController : Controller
     {
         WorldWideImportersContext db = new WorldWideImportersContext();
+
+        /// <summary>
+        /// Create Index view and pass it a person list based on the search name provided by query (if it has one)
+        /// </summary>
+        /// <returns>Return the Index View.</returns>
         public ActionResult Index()
         {
             string name = (Request.QueryString["name"]);
@@ -24,12 +29,17 @@ namespace HW6.Controllers
             return View();
         }
 
-
+        /// <summary>
+        /// Create Detail view.
+        /// </summary>
+        /// <param name="id">The id of person we are looking up.</param>
+        /// <returns>Return the Detail View.</returns>
         [HttpPost]
         public ActionResult Detail(int id)
         {
             var person = db.People.Find(id);
 
+            //Setup detailedPerson with personal info
             PersonDashboardVM detailedPerson = new PersonDashboardVM
             {
                 //personal info
@@ -39,13 +49,14 @@ namespace HW6.Controllers
                 FaxNumber = person.FaxNumber,
                 EmailAddress = person.EmailAddress,
                 ValidFrom = person.ValidFrom,
-                //adjust photo here
                 Photo = person.Photo
             };
 
+            //check if customers2 is null and return if so
             if (person.Customers2.FirstOrDefault() == null)
                 return View(detailedPerson);
 
+            //Fill in detailedPerson with more information if matches customer2 id
             if (person.Customers2.FirstOrDefault().PrimaryContactPersonID == id)
             {
                 //company info
@@ -54,7 +65,6 @@ namespace HW6.Controllers
                 detailedPerson.CompanyPhoneNumber = customer.PhoneNumber;
                 detailedPerson.CompanyFaxNumber = customer.PhoneNumber;
                 detailedPerson.Website = customer.WebsiteURL;
-                //adjust below to only year
                 detailedPerson.YearStarted = customer.ValidFrom.Year;
 
                 //purchases info
@@ -62,19 +72,18 @@ namespace HW6.Controllers
                 detailedPerson.GrossSales = customer.Orders.Sum(n => n.Invoices.Sum(n2 => n2.InvoiceLines.Sum(n3 => n3.ExtendedPrice)));
                 detailedPerson.GrossProfit = customer.Orders.Sum(n => n.Invoices.Sum(n2 => n2.InvoiceLines.Sum(n3 => n3.LineProfit)));
 
-                var test = customer.Orders.SelectMany(n => n.Invoices.SelectMany(n2 => n2.InvoiceLines.Select(n3 => new { StockItemID = n3.StockItemID, LineProfit = n3.LineProfit, Description = n3.Description, SP = n3.Invoice.Person4.FullName }))).OrderByDescending(n4 => n4.LineProfit).Take(10).ToList();
+                //make list of top 10 purchases
+                var topPurchases = customer.Orders.SelectMany(n => n.Invoices.SelectMany(n2 => n2.InvoiceLines.Select(n3 => new { StockItemID = n3.StockItemID, LineProfit = n3.LineProfit, Description = n3.Description, SP = n3.Invoice.Person4.FullName }))).OrderByDescending(n4 => n4.LineProfit).Take(10).ToList();
 
                 detailedPerson.MostProfitableItems = new List<ItemPurchased>(); 
-
-                for (int i = 0; i < test.Count(); i++)
+                
+                //populate detailedPersons mostProfitable Item list with topPurchases
+                for (int i = 0; i < topPurchases.Count(); i++)
                 {
-                    detailedPerson.MostProfitableItems.Add(new ItemPurchased(test.ElementAt(i).StockItemID, test.ElementAt(i).Description, test.ElementAt(i).LineProfit, test.ElementAt(i).SP));
+                    detailedPerson.MostProfitableItems.Add(new ItemPurchased(topPurchases.ElementAt(i).StockItemID, topPurchases.ElementAt(i).Description, topPurchases.ElementAt(i).LineProfit, topPurchases.ElementAt(i).SP));
                 }
                 return View(detailedPerson);
             }
-
-
-            //remember to put in filler photo
 
             return View(detailedPerson);
         }
