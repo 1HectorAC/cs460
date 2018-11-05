@@ -46,7 +46,7 @@ namespace HW6.Models.ViewModels
         [Display(Name = "Member Since")]
         public int YearStarted { get; set; }
 
-        //purchases
+        //Information from purchases.
         [Display(Name = "Orders")]
         public int TotalOrders { get; set; }
 
