@@ -8,6 +8,7 @@
 
 <div class="container">
     <div class="row">
+        <!--person information section-->
         <div class="col-md-5 borderLine">
             <h4>@Html.DisplayFor(model => model.FullName) (Personal Information)</h4>
             <hr />
@@ -38,13 +39,12 @@
                 </dd>
 
                 <dt>
-                    
+
                     @Html.DisplayNameFor(model => model.Photo)
-                    
+
                 </dt>
 
                 <dd>
-                    @*@Html.DisplayFor(model => model.Photo)*@
                     <img src="https://via.placeholder.com/150C/O%20https://placeholder.com/" alt="" />
                 </dd>
 
@@ -58,8 +58,10 @@
 
             </dl>
         </div>
+        <!--check if model has 2nd part to display(company info, purchase info)-->
         @if (Model.CompanyName != null)
         {
+            <!--Company information section-->
             <div class="col-md-5 borderLine">
                 <h4>Company Information</h4>
                 <hr />
@@ -101,7 +103,7 @@
                     </dd>
                 </dl>
             </div>
-
+            <!--Purchase information section-->
             <div class="col-md-5 borderLine">
                 <h4>Purchase Summary</h4>
                 <hr />
@@ -133,7 +135,7 @@
             <div class="col-md-5 borderLine">
                 <h4>Top 10 Purchased Items</h4>
                 <hr />
-                <table class= "table">
+                <table class="table">
                     <tr class="text-center">
                         <th> StockItemID </th>
                         <th> Description </th>
@@ -143,21 +145,21 @@
 
                     @foreach (var item in Model.MostProfitableItems)
                     {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.StockItemID)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ProfitLine)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SalesPerson)
-                        </td>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StockItemID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProfitLine)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SalesPerson)
+                            </td>
 
-                    </tr>
+                        </tr>
                     }
 
                 </table>
