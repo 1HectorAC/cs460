@@ -3,11 +3,12 @@
     ViewBag.Title = "Home Page";
 }
 
-<h2 class="text-center">Search</h2>
-
+<h2 class="text-center">Client Search</h2>
+<br />
 <form action="/" method="get">
-    @Html.TextArea("name", new { @class = "form-control" })
-    <input type="submit" value="Submit Request" class="btn btn-success" />
+    @Html.TextArea("name", new { @class = "form-control", required = "required", maxlength = 40, style = "max-width:750px", rows = "1", placeholder = "Enter Name" })
+    <br />
+    <input type="submit" value="Submit Request" class="btn btn-primary" />
 </form>
 
 @if (Model != null)
@@ -15,15 +16,12 @@
     <p>Names matching your search ( @ViewBag.name ):</p>
     using (Html.BeginForm("Detail", "Home"))
     {
+        <br />
         foreach (var item in Model)
         {
-
-            @*<input type="submit" value="@Html.DisplayFor(modelItem => item.FullName)" name="name2"/>*@
-            <button class="btn btn-default" type="submit" name="id" value="@Html.DisplayFor(modelItem => item.PersonID)">@Html.DisplayFor(modelItem => item.FullName)</button>
+            <button class="btn btn-default" type="submit" name="id" value="@Html.DisplayFor(modelItem => item.PersonID)" style="width:600px; text-align:left">@Html.DisplayFor(modelItem => item.FullName)</button>
             <br />
         }
 
     }
 }
-
-<!--need to display results here somehow-->
