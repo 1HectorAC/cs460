@@ -14,15 +14,27 @@ $('#inputWords').bind('keypress', function (e) {
             type: "GET",
             dataType: "json",
             url: source,
-            success: displayData,
+            success: displayWord,
             error: errorOnAjax
         });
     }
 });
 
-function displayData(data) {
-    //$("Result").add(data["test"])
-    console.log("display next:");
+function displayWord(data) {
+    var test = data["gif"];
+    if (data["imageCheck"]) {
+        console.log(test);
+        var imageElement = document.createElement("img");
+        imageElement.src = test;
+        imageElement.alt = test;
+        imageElement.style = "width:150px;height:150px;";
+        $("#Result").append(imageElement);
+    }
+    else {
+        var textElement = document.createElement("span");
+        textElement.innerHTML = test;
+        $("#Result").append(textElement);
+    }
 }
 
 function errorOnAjax() {
