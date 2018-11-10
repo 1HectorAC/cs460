@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -13,34 +15,37 @@ namespace HW7.Controllers
         // GET: Translator
         public JsonResult Translate(string word)
         {
-            
-            var key = System.Web.Configuration.WebConfigurationManager.AppSettings["APIKey"];
-            //string source = "https://api.giphy.com/v1/stickers/translate?api_key="+key+"&s=" + word;
-            string source = "https://api.giphy.com/v1/stickers/translate?api_key=" + key + "&s=lobster";
 
-            //WebRequest request = WebRequest.Create(@source);        
-            //WebResponse response = request.GetResponse();
-            //Stream dataStream = response.GetResponseStream();
-            //Console.WriteLine("check 1");
-            /*
-            StreamReader reader = new StreamReader(dataStream);
-            Console.WriteLine("check 2");
-            string responseFromServer = reader.ReadToEnd();
-            Console.WriteLine("check 3");
+            string gifUrl;
+            bool isImage;
+            //need borng definition
+            try
+            {
+                var key = System.Web.Configuration.WebConfigurationManager.AppSettings["APIKey"];
+                string source = "https://api.giphy.com/v1/stickers/translate?api_key=" + key + "&s=" + word;
 
-            reader.Close();*/
-            //dataStream.Close();     
-            //response.Close();
+                WebRequest request = WebRequest.Create(@source);
+                WebResponse response = request.GetResponse();
+                Stream dataStream = response.GetResponseStream();
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(source);
-           
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                StreamReader reader = new StreamReader(dataStream);
+                string responseFromServer = reader.ReadToEnd();
 
-            Console.WriteLine("check 1///");
-            response.Close();
-            //var data = ProcessData(responseFromServer);
-            //Console.WriteLine(responseFromServer);
-            var data = new {test = "something"};
+                reader.Close();
+                dataStream.Close();
+                response.Close();
+
+                JObject gifObject = JObject.Parse(responseFromServer);
+                gifUrl = gifObject["data"]["images"]["original"]["url"].ToString();
+                isImage = true;
+            }
+            catch(Exception e)
+            {
+                gifUrl = word;
+                isImage = false;
+            }
+
+            var data = new {gif = gifUrl, imageCheck = isImage};
             return Json(data, JsonRequestBehavior.AllowGet);
         }
     }
