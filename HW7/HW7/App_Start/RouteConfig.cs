@@ -16,8 +16,8 @@ namespace HW7
 
             routes.MapRoute(
                 name: "API",
-                url: "{controller}/{action}/{word}",
-                defaults: new { controller = "Translator", action = "Translate", word = UrlParameter.Optional }
+                url: "translate/{word}",
+                defaults: new { controller = "Translator", action = "Translate", word = ""}
             );
 
             routes.MapRoute(
