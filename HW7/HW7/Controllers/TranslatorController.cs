@@ -27,7 +27,7 @@ namespace HW7.Controllers
             //Log user information in database.
             User currentUser = new User
             {
-                LogDate = DateTime.Today,
+                LogDate = DateTime.Now,
                 RequestedWord = word,
                 RequestorsIPAddress = this.Request.UserHostAddress,
                 RequestorsBrowser = this.Request.Browser.Type
