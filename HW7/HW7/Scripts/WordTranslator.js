@@ -10,10 +10,10 @@ $('#inputWords').bind('keypress', function (e) {
             console.log("word to translate: " + word.toString());
 
             //check for boring or amazing words
-            var commonWords = ["am", "as", "are", "and", "are", "at", "be", "for", "from", "have", "he", "his", "i", "in", "is", "it", "me", "of", "on", "or", "she", "the", "that", "they", "this", "to", "want", "was", "with", "you"];
+            var commonWords = ["a", "am", "as", "are", "and", "are", "at", "be", "for", "from", "have", "he", "his", "i", "in", "is", "it", "me", "of", "on", "or", "she", "the", "that", "they", "this", "to", "want", "was", "with", "you"];
             var wordLowerCased = word.toLowerCase();
             //check if not a common word or if not a number
-            if (commonWords.indexOf(wordLowerCased) == -1 || !isNaN(word)) {
+            if (commonWords.indexOf(wordLowerCased) == -1) {
                 //translate amazing word
                 var source = "/Translate/" + word;
                 $.ajax({
