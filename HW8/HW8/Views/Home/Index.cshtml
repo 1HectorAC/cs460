@@ -4,30 +4,53 @@
 
 <div class="jumbotron">
     <h1>Reginald's Ancient Antiquities Auction House</h1>
-    
+
 </div>
+@model IEnumerable<HW8.Models.Bid>
 
 <div class="row">
     <div class="col-md-12 text-center">
         <p><a class="btn btn-default" href="Home/CreateBid">Bid on an Item!</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="">Learn more &raquo;</a></p>
+    <div class="col-md-12">
+        <h2 class="text-center">Recent 10 Bids</h2>
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="">Learn more &raquo;</a></p>
+    <div class="col-md-12">
+   
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ItemID</th>
+                    <th>Item Name</th>
+                    <th>Buyer Name</th>
+                    <th>Bid Amount</th>
+                    <th>TimeStamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.ItemID</td>
+
+                    <td>@Html.ActionLink(@item.Item.Name, "DetailItem", new { id = item.ItemID })</td>
+
+                    <td>@item.Buyer.Name</td>
+                    <td>$@item.Price</td>
+                    @if (@ViewBag.TodayDate == @item.TimeStamp.ToString("d"))
+                    {
+                        <td>@item.TimeStamp.ToString("t")</td>
+                    }
+                    else
+                    {
+                        <td>@item.TimeStamp</td>
+                    }
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    
     </div>
 </div>
