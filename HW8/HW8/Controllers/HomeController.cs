@@ -17,12 +17,13 @@ namespace HW8.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            ViewBag.TodayDate = DateTime.Today.ToString("d");
+            return View(db.Bids.OrderByDescending(n => n.TimeStamp).Take(10).ToList());
         }
 
         public ActionResult ListItems()
         {
-            return View(db.Items);
+            return View(db.Items.ToList());
 
         }
 
