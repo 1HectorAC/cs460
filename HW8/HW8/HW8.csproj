@@ -164,6 +164,7 @@
     <Compile Include="Models\Buyer.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Seller.cs" />
+    <Compile Include="Models\ViewModels\BuyerItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +178,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\BidsForItem.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -206,6 +208,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ListItems.cshtml" />
+    <Content Include="Views\Home\CreateItem.cshtml" />
+    <Content Include="Views\Home\EditItem.cshtml" />
+    <Content Include="Views\Home\DetailItem.cshtml" />
+    <Content Include="Views\Home\DeleteItem.cshtml" />
+    <Content Include="Views\Home\CreateBid.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
