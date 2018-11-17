@@ -34,9 +34,31 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemID)
+        </dt>
+        <dd>
+            <span id="ID">@Html.DisplayFor(model => model.ItemID)</span>
+        </dd>
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ItemID }) |
     @Html.ActionLink("Back to List", "ListItems")
 </p>
+<br />
+<h2 class="text-center">Bids on Item</h2>
+<div id="Result">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Buyer Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="TableContent"></tbody>
+    </table>
+</div>
+@section PageScripts{
+    <script type="text/javascript" src="~/Scripts/BidsForItem.js"></script>
+}
