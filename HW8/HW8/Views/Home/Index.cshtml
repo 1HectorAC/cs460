@@ -1,24 +1,22 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<HW8.Models.Bid>
+@{
+                ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+<div class="orangeColor jumbotron ">
     <h1>Reginald's Ancient Antiquities Auction House</h1>
-
 </div>
-@model IEnumerable<HW8.Models.Bid>
 
 <div class="row">
     <div class="col-md-12 text-center">
-        <p><a class="btn btn-default" href="Home/CreateBid">Bid on an Item!</a></p>
+        <p><a class="btn btn-info" href="Home/CreateBid">Bid on an Item!</a></p>
     </div>
     <div class="col-md-12">
         <h2 class="text-center">Recent 10 Bids</h2>
-
     </div>
     <div class="col-md-12">
-   
-        <table class="table">
+
+        <table class="table lightOrange">
             <thead>
                 <tr>
                     <th>ItemID</th>
@@ -31,26 +29,26 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <td>@item.ItemID</td>
+                    <tr>
+                        <td>@item.ItemID</td>
 
-                    <td>@Html.ActionLink(@item.Item.Name, "DetailItem", new { id = item.ItemID })</td>
+                        <td>@Html.ActionLink(@item.Item.Name, "DetailItem", new { id = item.ItemID })</td>
 
-                    <td>@item.Buyer.Name</td>
-                    <td>$@item.Price</td>
-                    @if (@ViewBag.TodayDate == @item.TimeStamp.ToString("d"))
-                    {
-                        <td>@item.TimeStamp.ToString("t")</td>
-                    }
-                    else
-                    {
-                        <td>@item.TimeStamp</td>
-                    }
+                        <td>@item.Buyer.Name</td>
+                        <td>$@item.Price</td>
+                        @if (@ViewBag.TodayDate == @item.TimeStamp.ToString("d"))
+                        {
+                            <td>@item.TimeStamp.ToString("t")</td>
+                        }
+                        else
+                        {
+                            <td>@item.TimeStamp</td>
+                        }
 
-                </tr>
+                    </tr>
                 }
             </tbody>
         </table>
-    
+
     </div>
 </div>
