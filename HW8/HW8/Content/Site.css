@@ -22,3 +22,18 @@ select,
 textarea {
     max-width: 280px;
 }
+.orangeColor {
+    background-color: #FF6D4D;
+    color: white;
+}
+
+.lightOrange {
+    background-color: #FFD1D1;
+}
+.lightColor {
+    background-color: #FFEAE8;
+}
+.darkOrange {
+    background-color: #2B0900;
+    color:white;
+}
