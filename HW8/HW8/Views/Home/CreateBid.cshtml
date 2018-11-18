@@ -17,17 +17,17 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
-        <label for="Item" class="control-label">Item</label>
+        <label for="Item" class="control-label">ItemID (Item Name)</label>
         <select name="ItemID" id="Item" class="form-control">
             @foreach (var item in Model.Items)
             {
-                <option type="number" value="@item.ItemID" name="ItemID">@Html.DisplayFor(modelItem => item.Name) </option>
+                <option type="number" value="@item.ItemID" name="ItemID">@item.ItemID (@item.Name) </option>
             }
         </select>
     </div>
 
     <div class="form-group">
-        <label for="Buyer" class="control-label">Buyer</label>
+        <label for="Name of Buyer" class="control-label">Buyer</label>
         <select name="BuyerID" id="Buyer" class="form-control">
             @foreach (var item in Model.Buyers)
             {
@@ -40,14 +40,14 @@
         <input type="text" name="Price" id="Price" class="form-control" value="" />
     </div>
 
-    <input type="submit" name="CreateBid" value="submit" class="btn btn-default" />
+    <input type="submit" name="CreateBid" value="submit" class="btn btn-info" />
 
 </div>
 
 }
-
+<br />
 <div>
-    @Html.ActionLink("Back to List", "ListItems")
+    @Html.ActionLink("Back to List", "ListItems",null, new {@class = "btn btn-info"})
 </div>
 
 @section Scripts {
