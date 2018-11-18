@@ -34,14 +34,14 @@
                 }
             </select>
         </div>
-        <input type="submit" name="CreateItem" value="submit" class="btn btn-default" />
+        <input type="submit" name="CreateItem" value="submit" class="btn btn-info" />
 
     </div>
 
 }
-
+<br />
 <div>
-    @Html.ActionLink("Back to List", "ListItems")
+    @Html.ActionLink("Back to List", "ListItems", null, new {@class = "btn btn-info" })
 </div>
 
 @section Scripts {
