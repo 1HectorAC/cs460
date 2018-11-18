@@ -4,42 +4,31 @@
     ViewBag.Title = "ListItems";
 }
 
-<h2>ListItems</h2>
+<h2>Items for Auction</h2>
 
-<p>
-    @Html.ActionLink("Create New", "CreateItem")
-</p>
-<table class="table">
-    <tr>
+<table class="table lightOrange">
+    <tr>   
         <th>
-            @Html.DisplayNameFor(model => model.Seller.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
+            <label for="Name" class="control-label">Item Name</label>
+        </th>       
+        <th> Options</th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Seller.Name)
-        </td>
+    <tr>  
         <td>
             @Html.DisplayFor(modelItem => item.Name)
-        </td>
+        </td> 
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditItem", new { id=item.ItemID }) |
-            @Html.ActionLink("Details", "DetailItem", new { id=item.ItemID }) |
-            @Html.ActionLink("Delete", "DeleteItem", new { id=item.ItemID })
+            @Html.ActionLink("Edit", "EditItem", new { id=item.ItemID}, new {@class = "btn btn-default" }) 
+            @Html.ActionLink("Details", "DetailItem", new { id=item.ItemID }, new { @class = "btn btn-default" }) 
+            @Html.ActionLink("Delete", "DeleteItem", new { id=item.ItemID }, new { @class = "btn btn-default" })
         </td>
     </tr>
 }
 
 </table>
+<p>
+
+    @Html.ActionLink("Add New Item", "CreateItem",null, new {@class = "btn btn-info" })
+</p>
