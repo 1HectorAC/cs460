@@ -1,0 +1,60 @@
+﻿@model HW8.Models.ViewModels.BuyerItem
+
+@{
+
+    ViewBag.Title = "CreateBid";
+}
+
+<div class="orangeColor text-center container">
+    <h2>Create New Bid</h2>
+</div>
+<br />
+<div class="container lightOrange">
+    @using (Html.BeginForm("CreateBid", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <hr />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label for="Item" class="control-label">ItemID (Item Name)</label>
+                <select name="ItemID" id="Item" class="form-control">
+                    @foreach (var item in Model.Items)
+                    {
+                        <option type="number" value="@item.ItemID" name="ItemID">@item.ItemID (@item.Name) </option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Name of Buyer" class="control-label">Buyer</label>
+                <select name="BuyerID" id="Buyer" class="form-control">
+                    @foreach (var item in Model.Buyers)
+                    {
+                        <option type="number" value="@item.BuyerID" name="BuyerID">@Html.DisplayFor(modelItem => item.Name) </option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Price" class="control-label">Price</label>
+                <input type="text" name="Price" id="Price" class="form-control" value="" />
+            </div>
+
+            <input type="submit" name="CreateBid" value="submit" class="btn btn-info" />
+
+        </div>
+
+    }
+    <br />
+</div>
+<br />
+<div>
+    @Html.ActionLink("Back to List", "ListItems", null, new { @class = "btn btn-info" })
+</div>
+<br />
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

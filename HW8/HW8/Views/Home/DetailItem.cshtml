@@ -1,0 +1,63 @@
+﻿@model HW8.Models.Item
+
+@{
+    ViewBag.Title = "DetailItem";
+}
+<div class="orangeColor text-center container">
+<h2>Item Details</h2>
+</div>
+<br />
+<div class="lightOrange container">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            ItemID
+        </dt>
+        <dd>
+            <span id="ID">@Html.DisplayFor(model => model.ItemID)</span>
+        </dd>
+        <dt>
+            Name of Item
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            Description
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            Name of Seller
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seller.Name)
+        </dd>
+
+    </dl>
+</div>
+<br />
+<p>
+    @Html.ActionLink("Back to List", "ListItems",null, new {@class="btn btn-info" })
+</p>
+<br />
+@*Table of bid on item bellow*@
+<h2 class="text-center">Bids on Item</h2>
+<div id="Result">
+    <table class="table lightOrange">
+        <thead>
+            <tr>
+                <th>Buyer Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="TableContent"></tbody>
+    </table>
+</div>
+@section PageScripts{
+    <script type="text/javascript" src="~/Scripts/BidsForItem.js"></script>
+}
