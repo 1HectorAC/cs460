@@ -3,32 +3,36 @@
 @{
     ViewBag.Title = "ListItems";
 }
+<div class="orangeColor text-center container">
 
-<h2>Items for Auction</h2>
+    <h2>Items for Auction</h2>
 
-<table class="table lightOrange">
-    <tr>   
-        <th>
-            <label for="Name" class="control-label">Item Name</label>
-        </th>       
-        <th> Options</th>
-    </tr>
+</div>
+<br />
+<div class="container">
+    <table class="table lightOrange">
+        <tr>
+            <th>
+                <label for="Name" class="control-label">Item Name</label>
+            </th>
+            <th> Options</th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>  
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td> 
-        <td>
-            @Html.ActionLink("Edit", "EditItem", new { id=item.ItemID}, new {@class = "btn btn-default" }) 
-            @Html.ActionLink("Details", "DetailItem", new { id=item.ItemID }, new { @class = "btn btn-default" }) 
-            @Html.ActionLink("Delete", "DeleteItem", new { id=item.ItemID }, new { @class = "btn btn-default" })
-        </td>
-    </tr>
-}
-
-</table>
-<p>
-
-    @Html.ActionLink("Add New Item", "CreateItem",null, new {@class = "btn btn-info" })
-</p>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditItem", new { id = item.ItemID }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Details", "DetailItem", new { id = item.ItemID }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Delete", "DeleteItem", new { id = item.ItemID }, new { @class = "btn btn-default" })
+                </td>
+            </tr>
+        }
+    </table>
+    <p>
+        @Html.ActionLink("Add New Item", "CreateItem", null, new { @class = "btn btn-info" })
+    </p>
+</div>

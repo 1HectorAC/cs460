@@ -5,43 +5,46 @@
 
     ViewBag.Title = "CreateItem";
 }
+<div class="orangeColor text-center container">
+    <h2>Create New Item</h2>
+</div>
+<br />
+<div class="container lightOrange">
+    @using (Html.BeginForm("CreateItem", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <hr />
 
-<h2>Create New Item</h2>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+            <div class="form-group">
+                <label for="Name" class="control-label">Item Name</label>
+                <input type="text" name="Name" id="Name" class="form-control" value="" />
+            </div>
+            <div class="form-group">
+                <label for="Description" class="control-label">Description</label>
+                <input type="text" name="Description" id="Description" class="form-control" value="" />
+            </div>
+            <div class="form-group">
+                <label for="Seller" class="control-label">Seller</label>
+                <select name="SellerID" id="Seller" class="form-control">
+                    @foreach (var item in Model)
+                    {
+                        <option type="number" value="@item.SellerID" name="SellerID">@Html.DisplayFor(modelItem => item.Name) </option>
+                    }
+                </select>
+            </div>
+            <input type="submit" name="CreateItem" value="submit" class="btn btn-info" />
 
-@using (Html.BeginForm("CreateItem", "Home", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <hr />
-
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-        <div class="form-group">
-            <label for="Name" class="control-label">Item Name</label>
-            <input type="text" name="Name" id="Name" class="form-control" value="" />
         </div>
-        <div class="form-group">
-            <label for="Description" class="control-label">Description</label>
-            <input type="text" name="Description" id="Description" class="form-control" value="" />
-        </div>
-        <div class="form-group">
-            <label for="Seller" class="control-label">Seller</label>
-            <select name="SellerID" id="Seller" class="form-control">
-                @foreach (var item in Model)
-                {
-                    <option type="number" value="@item.SellerID" name="SellerID">@Html.DisplayFor(modelItem => item.Name) </option>
-                }
-            </select>
-        </div>
-        <input type="submit" name="CreateItem" value="submit" class="btn btn-info" />
 
-    </div>
-
-}
+    }
+    <br />
+</div>
 <br />
 <div>
-    @Html.ActionLink("Back to List", "ListItems", null, new {@class = "btn btn-info" })
+    @Html.ActionLink("Back to List", "ListItems", null, new { @class = "btn btn-info" })
 </div>
 
 @section Scripts {

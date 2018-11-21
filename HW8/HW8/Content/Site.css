@@ -26,9 +26,17 @@ textarea {
     background-color: #FF6D4D;
     color: white;
 }
+.whiteOrange {
+    background-color: white;
+    color: #FF6D4D;
+}
 
 .lightOrange {
-    background-color: #FFD1D1;
+    background-color: #FFAD91;
+    color: white;
+}
+tr {
+    border: 2px solid white;
 }
 .lightColor {
     background-color: #FFEAE8;

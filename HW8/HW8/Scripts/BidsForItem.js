@@ -1,5 +1,4 @@
 ﻿var ajax_call = function () {
-    //your jQuery ajax code
     var itemID = $("#ID").text().toString();
     //need item id
     var source = "/Home/ItemBids/" + itemID;
@@ -8,22 +7,21 @@
         type: "GET",
         dataType: "json",
         url: source,
-        success: displayWord,
+        success: displayTable,
         error: detectedError
     });
 };
 ajax_call();
-var interval = 1000 * 5; // where X is your timer interval in X seconds
+var interval = 1000 * 5; 
 
 window.setInterval(ajax_call, interval);
 
-function displayWord(data) {
+function displayTable(data) {
     console.log("start displayWord");
     var TablePrices = data['TablePrice'];
     var TableBuyers = data['TableBuyer'];
 
     var table = $('<tbody>', {id:'TableContent'});
-    //var table = $('Bob');
     for (i = 0; i < TablePrices.length; i++) {
         
         var column1 = $('<td>').text(TableBuyers[i]);
@@ -34,7 +32,7 @@ function displayWord(data) {
         table.append(row);
     }
 
-    //$('.table').append(table);
+    //This part will replace the element with TableContent ID to update the table
     $('#TableContent').replaceWith(table);
     console.log("success");
 }
