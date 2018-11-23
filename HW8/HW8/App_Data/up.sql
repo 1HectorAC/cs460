@@ -55,8 +55,3 @@ INSERT INTO [dbo].[Bid](ItemID,BuyerID,Price,TimeStamp) VALUES
 	(1001,3,250000,'12/04/2017 09:04:22'),
 	(1003,1,95000 ,'12/04/2017 08:44:03')
 GO
-
-select * from Seller
-select * from Buyer
-select * from Item
-select * from Bid
