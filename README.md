@@ -1,8 +1,2 @@
-stuff
-stuff
-hw4 stuff
-hw5 stuff
-hw6 stuff
-hw7 stuff
-hw8 stuff
-hw9 stuff
+# About
+This repository holds homework done in my cs460 (Software Development) class at Western Oregon University.
